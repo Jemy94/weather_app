@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_padding_size_xxlarge">
+
+        <include
+            android:id="@+id/addPhotoAppBar"
+            layout="@layout/app_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageCard"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/weather_image_height"
+            android:layout_margin="@dimen/margin_padding_size_xsmall"
+            android:visibility="invisible"
+            app:cardCornerRadius="@dimen/margin_padding_size_xsmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addPhotoAppBar">
+
+            <ImageView
+                android:id="@+id/placeImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageButton
+            android:id="@+id/shareIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_size_medium"
+            android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+            android:background="@color/md_white"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_share"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCard" />
+
+        <TextView
+            android:id="@+id/addPhotoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_size_large"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/take_photo"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:drawableTopCompat="@drawable/ic_add_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addPhotoAppBar" />
+
+        <EditText
+            android:id="@+id/cityEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+            android:layout_marginTop="@dimen/margin_padding_size_medium"
+            android:hint="@string/enter_your_city"
+            app:layout_constraintEnd_toStartOf="@+id/guideLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shareIcon" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/getWeatherButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
+            android:text="@string/search"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cityEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideLine"
+            app:layout_constraintTop_toTopOf="@id/cityEditText" />
+
+        <TextView
+            android:id="@+id/tempLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+            android:layout_marginTop="@dimen/margin_padding_size_large"
+            android:text="@string/temp_label"
+            android:textColor="@color/md_grey_700"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityEditText" />
+
+        <TextView
+            android:id="@+id/humidityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+            android:layout_marginTop="@dimen/margin_padding_size_medium"
+            android:text="@string/humidity"
+            android:textColor="@color/md_grey_700"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tempLabel" />
+
+        <TextView
+            android:id="@+id/conditionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_xsmall"
+            android:layout_marginTop="@dimen/margin_padding_size_medium"
+            android:text="@string/condition"
+            android:textColor="@color/md_grey_700"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/humidityLabel" />
+
+        <TextView
+            android:id="@+id/tempTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_temp"
+            app:layout_constraintBottom_toBottomOf="@+id/tempLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tempLabel"
+            tools:text="23" />
+
+        <TextView
+            android:id="@+id/humidityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_humidity"
+            app:layout_constraintBottom_toBottomOf="@+id/humidityLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/humidityLabel"
+            tools:text="36" />
+
+        <TextView
+            android:id="@+id/conditionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_size_xsmall"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/conditionLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/conditionLabel"
+            tools:text="Clear sky" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
+            android:layout_marginTop="@dimen/margin_padding_size_large"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/conditionTV" />
+
+        <include
+            android:id="@+id/loadingDialog"
+            layout="@layout/loading_dialog"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
